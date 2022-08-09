@@ -39,8 +39,10 @@ public class ThemePark {
     }
 
     public void visit(Visitor visitor, Attraction attraction) {
-        visitor.addVisit(attraction);
-        attraction.incrementVisitCount();
+        if (attraction.isAllowed(visitor)) {
+            visitor.addVisit(attraction);
+            attraction.incrementVisitCount();
+        }
     }
 
     public ArrayList<IReviewed> getAllowedFor(Visitor visitor) {
